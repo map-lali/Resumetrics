@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./Dashboard.css";
 
 function APDashboardLayout() {
+  const [showNotifications, setShowNotifications] = useState(false);
+
   const linkClass = ({ isActive }) =>
     isActive ? "nav-link active-link" : "nav-link";
+
+  const notifications = [
+    { message: "Your application for Data Analyst was received", time: "30 m ago" },
+    { message: "Software Engineer role moved to interview stage", time: "1 h ago" },
+    { message: "New job posted: UX Designer", time: "2 h ago" },
+  ];
 
   return (
     <div className="dashboard-container">
@@ -57,14 +65,28 @@ function APDashboardLayout() {
         </div>
       </aside>
 
-
       {/* Main Content */}
       <main className="main-content">
         <header className="topbar">
           <div className="topbar-right">
-            <div className="notification">
+            <div
+              className="notification"
+              onClick={() => setShowNotifications(!showNotifications)}
+            >
               <i className="bi bi-bell"></i>
               <span className="dot"></span>
+              {showNotifications && (
+                <div className="notification-dropdown">
+                  <ul>
+                    {notifications.map((note, index) => (
+                      <li key={index}>
+                        <div className="note-message">{note.message}</div>
+                        <div className="note-time">{note.time}</div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
             <span className="applicant-id">Applicant #001269</span>
             <div className="user-icon">

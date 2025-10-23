@@ -184,19 +184,78 @@
   gap: 20px;
 }
 
+/*notifications*/
 .notification {
   position: relative;
-  font-size: 18px;
+  cursor: pointer;
 }
 
 .notification .dot {
   position: absolute;
-  top: -3px;
-  right: -5px;
-  width: 8px;
+  top: 2px;
+  right: 2px;
   height: 8px;
-  background: red;
+  width: 8px;
+  background-color: red;
   border-radius: 50%;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  width: 300px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Tabs */
+.notification-dropdown::before {
+  content: 'All | Pending | Archive';
+  display: block;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Notification list */
+.notification-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notification-dropdown li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.notification-dropdown li:hover {
+  background-color: #f9f9f9;
+}
+
+.notification-dropdown li:last-child {
+  border-bottom: none;
+}
+
+/* Timestamp styling */
+.notification-dropdown li::after {
+  content: attr(data-time);
+  font-size: 0.75rem;
+  color: #999;
+  margin-left: auto;
+  padding-left: 1rem;
 }
 
 .hr-id {
