@@ -145,7 +145,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     minHeight: "100vh",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#2B2D42",
     padding: "2rem",
   },
   card: {
